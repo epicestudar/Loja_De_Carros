@@ -4,21 +4,18 @@ public class Carros {
     // atributos
     private String marca;
     private String modelo;
-    private int ano;
-    private String cor;
-    private String placa; // primary key
+    private String ano;
+    private String placa;
+    private String valor;
 
-    // métodos
-    //1. construtor
-    public Carros(String marca, String modelo, int ano, String cor, String placa) {
+    public Carros(String marca, String modelo, String ano, String placa, String valor) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
-        this.cor = cor;
         this.placa = placa;
+        this.valor = valor;
     }
 
-    //2. gets and sets
     public String getMarca() {
         return marca;
     }
@@ -35,20 +32,12 @@ public class Carros {
         this.modelo = modelo;
     }
 
-    public int getAno() {
+    public String getAno() {
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(String ano) {
         this.ano = ano;
-    }
-
-    public String getCor() {
-        return cor;
-    }
-
-    public void setCor(String cor) {
-        this.cor = cor;
     }
 
     public String getPlaca() {
@@ -58,4 +47,14 @@ public class Carros {
     public void setPlaca(String placa) {
         this.placa = placa;
     }
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+
+    
 }

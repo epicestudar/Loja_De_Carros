@@ -4,48 +4,46 @@ public class Clientes {
     // atributos
     private String cpf;
     private String nome;
-    private String sobrenome;
-    private int idade;
-
-    // construtor
-    public Clientes(String cpf, String nome, String sobrenome, int idade) {
+    private String telefone;
+    private String idade;
+    private String cidade;
+    public Clientes(String cpf, String nome, String telefone, String idade, String cidade) {
         this.cpf = cpf;
         this.nome = nome;
-        this.sobrenome = sobrenome;
+        this.telefone = telefone;
         this.idade = idade;
+        this.cidade = cidade;
     }
-
-    // gets and sets
     public String getCpf() {
         return cpf;
     }
-
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public String getSobrenome() {
-        return sobrenome;
+    public String getTelefone() {
+        return telefone;
     }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
-
-    public int getIdade() {
+    public String getIdade() {
         return idade;
     }
-
-    public void setIdade(int idade) {
+    public void setIdade(String idade) {
         this.idade = idade;
     }
+    public String getCidade() {
+        return cidade;
+    }
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
 
+    
 }

@@ -3,6 +3,7 @@ package Connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
@@ -11,7 +12,7 @@ public class ConnectionFactory {
     private static final String USUARIO = "postgres";
     private static final String SENHA = "postgres";
 
-     public static Connection getConnection() {
+    public static Connection getConnection() {
         try {
             return DriverManager.getConnection(URL, USUARIO, SENHA);
         } catch (SQLException e) {
@@ -29,7 +30,7 @@ public class ConnectionFactory {
         }
     }
 
-     public static void closeConnection(PreparedStatement stmt) {
+    public static void closeConnection(PreparedStatement stmt) {
         try {
             if (stmt != null && stmt != null) {
                 stmt.close();
@@ -38,11 +39,25 @@ public class ConnectionFactory {
             ex.printStackTrace();
         }
     }
-     public static void closeConnection(Connection connection, PreparedStatement stmt) {
+
+    public static void closeConnection(Connection connection, PreparedStatement stmt) {
         try {
             if (connection != null && stmt != null) {
                 stmt.close();
                 connection.close();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    // Método para fechar a conexão, o objeto PreparedStatement e o ResultSet
+    public static void closeConnection(Connection connection, PreparedStatement stmt,
+            ResultSet rs) {
+        closeConnection(connection, stmt);
+        try {
+            if (rs != null) {
+                rs.close();
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
