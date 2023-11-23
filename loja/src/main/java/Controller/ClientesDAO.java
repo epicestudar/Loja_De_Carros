@@ -22,7 +22,7 @@ public class ClientesDAO {
 
     // criar Tabela
     public void criaTabela() {
-        String sql = "CREATE TABLE IF NOT EXISTS clientes (NOME\r\n" + //
+        String sql = "CREATE TABLE IF NOT EXISTS clientes_lojacarros (NOME\r\n" + //
                 "VARCHAR(255),IDADE VARCHAR(255),CIDADE VARCHAR(255),CPF VARCHAR(255) PRIMARY KEY, TELEFONE\r\n" + //
                 "VARCHAR(255))";
         try (Statement stmt = this.connection.createStatement()) {
@@ -44,7 +44,7 @@ public class ClientesDAO {
         clientes = new ArrayList<>();
         // Cria uma lista para armazenar os carros recuperados do banco de dados
         try {
-            stmt = connection.prepareStatement("SELECT * FROM clientes");
+            stmt = connection.prepareStatement("SELECT * FROM clientes_lojacarros");
             // Prepara a consulta SQL para selecionar todos os registros da tabela
             rs = stmt.executeQuery();
             // Executa a consulta e armazena os resultados no ResultSet
@@ -74,7 +74,7 @@ public class ClientesDAO {
     public void cadastrar(String nome, String idade, String cidade, String cpf, String telefone) {
         PreparedStatement stmt = null;
         // Define a instrução SQL parametrizada para cadastrar na tabela
-        String sql = "INSERT INTO clientes (nome, idade, cidade, cpf, telefone)\r\n" + //
+        String sql = "INSERT INTO clientes_lojacarros (nome, idade, cidade, cpf, telefone)\r\n" + //
                 "VALUES (?, ?, ?, ?, ?)";
         try {
             stmt = connection.prepareStatement(sql);
@@ -96,7 +96,7 @@ public class ClientesDAO {
     public void atualizar(String nome, String idade, String cidade, String cpf, String telefone) {
         PreparedStatement stmt = null;
         // Define a instrução SQL parametrizada para atualizar dados pela cpf
-        String sql = "UPDATE clientes SET nome = ?, idade = ?, cidade = ?, telefone =\r\n" + //
+        String sql = "UPDATE clientes_lojacarros SET nome = ?, idade = ?, cidade = ?, telefone =\r\n" + //
                 "? WHERE cpf = ?";
         try {
             stmt = connection.prepareStatement(sql);
@@ -119,7 +119,7 @@ public class ClientesDAO {
     public void apagar(String cpf) {
         PreparedStatement stmt = null;
         // Define a instrução SQL parametrizada para apagar dados pela cpf
-        String sql = "DELETE FROM clientes WHERE cpf = ?";
+        String sql = "DELETE FROM clientes_lojacarros WHERE cpf = ?";
         try {
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, cpf);

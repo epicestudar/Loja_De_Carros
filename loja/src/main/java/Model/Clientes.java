@@ -2,35 +2,23 @@ package Model;
 
 public class Clientes {
     // atributos
-    private String cpf;
     private String nome;
-    private String telefone;
     private String idade;
     private String cidade;
-    public Clientes(String cpf, String nome, String telefone, String idade, String cidade) {
-        this.cpf = cpf;
+    private String cpf;
+    private String telefone;
+    public Clientes(String nome, String idade, String cidade, String cpf, String telefone) {
         this.nome = nome;
-        this.telefone = telefone;
         this.idade = idade;
         this.cidade = cidade;
-    }
-    public String getCpf() {
-        return cpf;
-    }
-    public void setCpf(String cpf) {
         this.cpf = cpf;
+        this.telefone = telefone;
     }
     public String getNome() {
         return nome;
     }
     public void setNome(String nome) {
         this.nome = nome;
-    }
-    public String getTelefone() {
-        return telefone;
-    }
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
     }
     public String getIdade() {
         return idade;
@@ -43,6 +31,18 @@ public class Clientes {
     }
     public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+    public String getCpf() {
+        return cpf;
+    }
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    public String getTelefone() {
+        return telefone;
+    }
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     
