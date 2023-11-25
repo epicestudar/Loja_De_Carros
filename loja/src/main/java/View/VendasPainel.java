@@ -188,8 +188,23 @@ public class VendasPainel extends JPanel {
         editar.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            atualizarComboBoxClientes();
+            String data = dataVendidoField.getText();
+                String valor = valorField.getText();
+                String carro = (String) carrosComboBox.getSelectedItem();
+                String cliente = (String) clientesComboBox.getSelectedItem();
+            if (carro.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Selecione algo para editar");
+            } else {
+                operacoes.atualizar(dataVendidoField.getText(), valorField.getText(), carro, cliente);
+                atualizarComboBoxClientes();
             atualizarComboBoxCarros();
+                // Limpa os campos de entrada após a operação de atualização
+               clientesComboBox.setSelectedIndex(0);
+                        carrosComboBox.setSelectedIndex(0);
+                        dataVendidoField.setText("");
+                        valorField.setText("");
+                JOptionPane.showMessageDialog(null, "Cliente editado com sucesso!");
+            }
         }
     });
 
