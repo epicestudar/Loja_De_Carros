@@ -40,7 +40,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 
 public class VendasPainel extends JPanel {
-     private JButton cadastrar, apagar, editar;
+    private JButton cadastrar, apagar, editar;
     private JTextField clienteNomeField, carroVendidoField, dataVendidoField, valorField;
     private JTable table;
     private DefaultTableModel tableModel;
@@ -54,8 +54,29 @@ public class VendasPainel extends JPanel {
 
     public VendasPainel() {
         super();
-         // entrada de dados
-carrosComboBox = new JComboBox<>();
+        // entrada de dados
+
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new GridLayout(7, 2));
+        inputPanel.add(clientesComboBox);
+        inputPanel.add(carrosComboBox);
+        inputPanel.add(new JLabel("Data da Venda:")).setFont(new Font("Arial", Font.PLAIN, 16));
+        dataVendidoField = new JTextField(20);
+        inputPanel.add(dataVendidoField);
+        inputPanel.add(new JLabel("Valor da Venda:")).setFont(new Font("Arial", Font.PLAIN, 16));
+        valorField = new JTextField(20);
+        inputPanel.add(valorField);
+        add(inputPanel);
+        JPanel botoes = new JPanel();
+        botoes.add(cadastrar = new JButton("Cadastrar")).setBackground((Color.CYAN));
+        botoes.add(editar = new JButton("Editar")).setBackground((Color.GREEN));
+        botoes.add(apagar = new JButton("Apagar")).setBackground((Color.RED));
+        add(botoes);
+        inputPanel.setVisible(true);
+        botoes.setVisible(true);
+
+        carrosComboBox = new JComboBox<>();
         // Preencha o JComboBox com os carros
         carros = new CarrosDAO().listarTodos();
         carrosComboBox.addItem("Selecione o Carro");
@@ -64,7 +85,7 @@ carrosComboBox = new JComboBox<>();
                     + " " + carro.getModelo()
                     + " " + carro.getPlaca());
         }
-        // add(carrosComboBox);
+        add(carrosComboBox);
 
         clientesComboBox = new JComboBox<>();
         // Preencha o JComboBox com os carros
@@ -74,33 +95,9 @@ carrosComboBox = new JComboBox<>();
             clientesComboBox.addItem(cliente.getNome()
                     + " " + cliente.getCpf());
         }
-        // add(clientesComboBox);
-        
-          setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-          JPanel inputPanel = new JPanel();
-          inputPanel.setLayout(new GridLayout(7, 2));
-           inputPanel.add(clientesComboBox);
-          inputPanel.add(carrosComboBox);
-          inputPanel.add(new JLabel("Data da Venda:")).setFont(new Font("Arial", Font.PLAIN, 16));
-          dataVendidoField = new JTextField(20);
-          inputPanel.add(dataVendidoField);
-          inputPanel.add(new JLabel("Valor da Venda:")).setFont(new Font("Arial", Font.PLAIN, 16));
-          valorField = new JTextField(20);
-          inputPanel.add(valorField);
-          add(inputPanel);
-          JPanel botoes = new JPanel();
-          botoes.add(cadastrar = new JButton("Cadastrar")).setBackground((Color.CYAN));
-          botoes.add(editar = new JButton("Editar")).setBackground((Color.GREEN));
-          botoes.add(apagar = new JButton("Apagar")).setBackground((Color.RED));
-          add(botoes);
-          inputPanel.setVisible(true);
-          botoes.setVisible(true);
-          
+        add(clientesComboBox);
 
-
-          
-
-             // tabela de clientes
+        // tabela de clientes
         JScrollPane jSPane = new JScrollPane();
         add(jSPane);
         tableModel = new DefaultTableModel(new Object[][] {},
@@ -108,13 +105,12 @@ carrosComboBox = new JComboBox<>();
         table = new JTable(tableModel);
         jSPane.setViewportView(table);
         jSPane.setVisible(true);
-        
 
         new VendasDAO().criaTabela();
 
         atualizarTabela();
 
-          // botões de eventos
+        // botões de eventos
         // tratamento de eventos(construtor)
         // tratamento de Eventos
         table.addMouseListener(new MouseAdapter() {
@@ -122,8 +118,6 @@ carrosComboBox = new JComboBox<>();
             public void mouseClicked(MouseEvent evt) {
                 linhaSelecionada = table.rowAtPoint(evt.getPoint());
                 if (linhaSelecionada != -1) {
-                    clienteNomeField.setText((String) table.getValueAt(linhaSelecionada, 0));
-                    carroVendidoField.setText((String) table.getValueAt(linhaSelecionada, 1));
                     dataVendidoField.setText((String) table.getValueAt(linhaSelecionada, 2));
                     valorField.setText((String) table.getValueAt(linhaSelecionada, 3));
                 }
@@ -136,53 +130,101 @@ carrosComboBox = new JComboBox<>();
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Chama o método "cadastrar" do objeto operacoes com os valores dos
+                String data = dataVendidoField.getText();
+                String valor = valorField.getText();
                 String cliente = (String) clientesComboBox.getSelectedItem();
                 String carro = (String) carrosComboBox.getSelectedItem();
                 // campos de entrada
 
-                if(cliente.isEmpty() || carro.isEmpty() || dataVendidoField.equals(null) || valorField.equals(null)) {
+                if (data.isEmpty() || valor.isEmpty() || cliente.equals("Selecione um cliente")
+                        || carro.equals("Selecione um carro")) {
                     JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos.");
-                }
-                else{
-                    operacoes.cadastrar(cliente, carro,
+                } else if (!valor.matches("[0-9]+")) {
+                    JOptionPane.showMessageDialog(null, "O campo 'Valor' deve conter apenas números.");
+                } else {
+                    int confirmacaoVendas = JOptionPane.showConfirmDialog(null,
+                            "Tem certeza de que deseja registrar a venda?", "Confirmação", JOptionPane.YES_NO_OPTION);
+                    if (confirmacaoVendas == JOptionPane.YES_NO_OPTION) {
+                        operacoes.cadastrar(cliente, carro, data, valor);
+                        // Limpa os campos de entrada após a operação de cadastro
+                        clientesComboBox.setSelectedIndex(0);
+                        carrosComboBox.setSelectedIndex(0);
+                        dataVendidoField.setText("");
+                        valorField.setText("");
+                        JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!");
+                    }
 
-                        dataVendidoField.getText(), valorField.getText());
-                // Limpa os campos de entrada após a operação de cadastro
-                clienteNomeField.setText("");
-                carroVendidoField.setText("");
-                dataVendidoField.setText("");
-                valorField.setText("");
                 }
             }
         });
 
-         // Configura a ação do botão "apagar" para excluir um registro no banco de dados
-         apagar.addActionListener(new ActionListener() {
+        // Configura a ação do botão "apagar" para excluir um registro no banco de dados
+        apagar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                 String carro = (String) carrosComboBox.getSelectedItem();
-                 String cliente = (String) clientesComboBox.getSelectedItem();
-                // Chama o método "apagar" do objeto operacoes com o valor do campo de
+                String data = dataVendidoField.getText();
+                String valor = valorField.getText();
+                String carro = (String) carrosComboBox.getSelectedItem();
+                String cliente = (String) clientesComboBox.getSelectedItem();
 
-                // entrada "placa"
-
-                operacoes.apagar(carro);
-                // Limpa os campos de entrada após a operação de exclusão
-                clienteNomeField.setText("");
-                carroVendidoField.setText("");
-                dataVendidoField.setText("");
-               valorField.setText("");
+                if (carro.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Preencha com o carro que deseja apagar");
+                } else {
+                    int confirmacaoApagar = JOptionPane.showConfirmDialog(null,
+                            "Tem certeza de que deseja apagar o registro da venda?", "Confirmação",
+                            JOptionPane.YES_NO_OPTION);
+                    if (confirmacaoApagar == JOptionPane.YES_NO_OPTION) {
+                        operacoes.apagar(carro);
+                        // Limpa os campos de entrada após a operação de exclusão
+                        clientesComboBox.setSelectedIndex(0);
+                        carrosComboBox.setSelectedIndex(0);
+                        dataVendidoField.setText("");
+                        valorField.setText("");
+                        JOptionPane.showMessageDialog(null, "VENDA DELETADA COM SUCESSO!");
+                    }
+                }
             }
         });
+
+        editar.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            atualizarComboBoxClientes();
+            atualizarComboBoxCarros();
+        }
+    });
 
     }
 
-     private void atualizarTabela() {
+    private void atualizarTabela() {
         // atualizar tabela pelo banco de dados
         tableModel.setRowCount(0);
         vendas = new VendasDAO().listarTodos();
         for (Vendas vendas : vendas) {
-            tableModel.addRow(new Object[] { vendas.getCliente(), vendas.getCarroVendido(), vendas.getDataVenda(), vendas.getValor() });
+            tableModel.addRow(new Object[] { vendas.getCliente(), vendas.getCarroVendido(), vendas.getDataVenda(),
+                    vendas.getValor() });
         }
     }
+
+    // Método para atualizar ComboBox de Clientes
+    private void atualizarComboBoxClientes() {
+        clientesComboBox.removeAllItems();
+        clientesComboBox.addItem("Selecione um cliente");
+        clientes = new ClientesDAO().listarTodos();
+        for (Clientes cliente : clientes) {
+            clientesComboBox.addItem(cliente.getNome());
+        }
     }
+
+    // Método para atualizar ComboBox de Carros
+    private void atualizarComboBoxCarros() {
+        carrosComboBox.removeAllItems();
+        carrosComboBox.addItem("Selecione um Carro");
+        carros = new CarrosDAO().listarTodos();
+        for (Carros carro : carros) {
+            carrosComboBox.addItem(carro.getMarca() + " " + carro.getModelo());
+        }
+    }
+    
+
+}
