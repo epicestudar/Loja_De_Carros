@@ -12,14 +12,37 @@
 <p align="left">
    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=440&size=22&pause=1000&color=38F77CFF&center=false&vCenter=false&repeat=false&width=435&lines=Introdução 👋" alt="Typing SVG" /></a>
    <p>
-      Seja bem-vindo(a) à documentação deste projeto. Aqui você encontrará uma descrição sobre o que se trata a loja de carros feita com GUI (Graphic User Interface) e JDBC (Java Database Connection).
+      Seja bem-vindo(a) à documentação deste projeto. Aqui estará o funcionamento da loja de carros feita com GUI (Graphic User Interface) e JDBC (Java Database Connection) utilizando PostgresSQL para o banco de dados. O meu notebook é um pouco antigo e por isso os gifs não ficaram com uma qualidade muito boa, mas é isso.
    </p>
 </p> <br><br>
 
 <p align="left">
-   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=440&size=22&pause=1000&color=38F77CFF&center=false&vCenter=false&repeat=false&width=435&lines=Telas e Visual da Loja 👋" alt="Typing SVG" /></a>
+   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=440&size=22&pause=1000&color=38F77CFF&center=false&vCenter=false&repeat=false&width=435&lines=Cadastro de Carros 🚗" alt="Typing SVG" /></a>
    <p>
+      <h3>Cadastrando o carro</h3>
      <img src="gifs/gif1.gif">
+      <br><br><br>
+      <h3>Editando alguma informação caso tenha errado</h3>
+      <img src="gifs/gif2.gif">
+      <br><br><br>
+      <h3>Apagando o cadastro do carro</h3>
+      <img src="gifs/gif3.gif">
+      <br><br><br>
+   </p>
+</p> <br><br>
+
+<p align="left">
+   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=440&size=22&pause=1000&color=38F77CFF&center=false&vCenter=false&repeat=false&width=435&lines=Cadastro de Clientes 🧑" alt="Typing SVG" /></a>
+   <p>
+      <h3>Cadastrando o cliente</h3>
+     <img src="gifs/gif4.gif">
+      <br><br><br>
+      <h3>Editando alguma informação caso tenha errado</h3>
+      <img src="gifs/gif5.gif">
+      <br><br><br>
+      <h3>Apagando o cadastro do cliente</h3>
+      <img src="gifs/gif6.gif">
+      <br><br><br>
    </p>
 </p> <br><br>
 
