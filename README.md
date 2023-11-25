@@ -2,7 +2,7 @@
 <br>
 <br>
 <p align="center">
-   <img src="/projeto/src/assets/logo/logo.png" alt="logo" width=250px>
+   <img src="logo.png" alt="logo" width=250px>
 </p>
 
 <hr>
