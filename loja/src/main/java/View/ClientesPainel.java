@@ -7,6 +7,7 @@ import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -45,34 +46,34 @@ public class ClientesPainel extends JPanel {
     public ClientesPainel() {
         super();
 
-          // entrada de dados
-          setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        
-          JPanel inputPanel = new JPanel();
-          inputPanel.setLayout(new GridLayout(7, 2));
-          inputPanel.add(new JLabel("Nome")).setFont(new Font("Arial", Font.PLAIN, 16));
-          clienteNomeField = new JTextField(20);
-          inputPanel.add(clienteNomeField);
-          inputPanel.add(new JLabel("Idade")).setFont(new Font("Arial", Font.PLAIN, 16));
-          clienteIdadeField = new JTextField(20);
-          inputPanel.add(clienteIdadeField);
-          inputPanel.add(new JLabel("Cidade")).setFont(new Font("Arial", Font.PLAIN, 16));
-          clienteCidadeField = new JTextField(20);
-          inputPanel.add(clienteCidadeField);
-          inputPanel.add(new JLabel("Cpf")).setFont(new Font("Arial", Font.PLAIN, 16));
-          clienteCpfField = new JTextField(20);
-          inputPanel.add(clienteCpfField);
-          inputPanel.add(new JLabel("Telefone")).setFont(new Font("Arial", Font.PLAIN, 16));
-          clienteTelefoneField = new JTextField(20);
-          inputPanel.add(clienteTelefoneField);
-          add(inputPanel);
-          JPanel botoes = new JPanel();
-          botoes.add(cadastrar = new JButton("Cadastrar")).setBackground((Color.CYAN));
-          botoes.add(editar = new JButton("Editar")).setBackground((Color.GREEN));
-          botoes.add(apagar = new JButton("Apagar")).setBackground((Color.RED));
-          add(botoes);
+        // entrada de dados
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-           // tabela de clientes
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new GridLayout(7, 2));
+        inputPanel.add(new JLabel("Nome")).setFont(new Font("Arial", Font.PLAIN, 16));
+        clienteNomeField = new JTextField(20);
+        inputPanel.add(clienteNomeField);
+        inputPanel.add(new JLabel("Idade")).setFont(new Font("Arial", Font.PLAIN, 16));
+        clienteIdadeField = new JTextField(20);
+        inputPanel.add(clienteIdadeField);
+        inputPanel.add(new JLabel("Cidade")).setFont(new Font("Arial", Font.PLAIN, 16));
+        clienteCidadeField = new JTextField(20);
+        inputPanel.add(clienteCidadeField);
+        inputPanel.add(new JLabel("Cpf")).setFont(new Font("Arial", Font.PLAIN, 16));
+        clienteCpfField = new JTextField(20);
+        inputPanel.add(clienteCpfField);
+        inputPanel.add(new JLabel("Telefone")).setFont(new Font("Arial", Font.PLAIN, 16));
+        clienteTelefoneField = new JTextField(20);
+        inputPanel.add(clienteTelefoneField);
+        add(inputPanel);
+        JPanel botoes = new JPanel();
+        botoes.add(cadastrar = new JButton("Cadastrar")).setBackground((Color.CYAN));
+        botoes.add(editar = new JButton("Editar")).setBackground((Color.GREEN));
+        botoes.add(apagar = new JButton("Apagar")).setBackground((Color.RED));
+        add(botoes);
+
+        // tabela de clientes
         JScrollPane jSPane = new JScrollPane();
         add(jSPane);
         tableModel = new DefaultTableModel(new Object[][] {},
@@ -83,7 +84,7 @@ public class ClientesPainel extends JPanel {
         new ClientesDAO().criaTabela();
 
         atualizarTabela();
-         // botões de eventos
+        // botões de eventos
         // tratamento de eventos(construtor)
         // tratamento de Eventos
         table.addMouseListener(new MouseAdapter() {
@@ -108,49 +109,94 @@ public class ClientesPainel extends JPanel {
         cadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Chama o método "cadastrar" do objeto operacoes com os valores dos
+                if (clienteNomeField.getText().isEmpty() || clienteIdadeField.getText().isEmpty()
+                        || clienteCidadeField.getText().isEmpty() || clienteCpfField.getText().isEmpty()
+                        || clienteTelefoneField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Preencha todos os campos antes de cadastrar o cliente");
+                } else if (!clienteIdadeField.getText().matches("[0-9]+")) {
+                    JOptionPane.showMessageDialog(null, "O campo 'idade' deve conter apenas números");
+                } else if (!clienteIdadeField.getText().equals("18")) {
+                    JOptionPane.showMessageDialog(null,
+                            "O cliente deve conter no mínimo 18 anos para ser possível de efetuar o seu cadastro");
+                } else if (!clienteCpfField.getText().matches("[0-9]+([-.][0-9]+)?")) {
+                    JOptionPane.showMessageDialog(null,
+                            "O campo 'cpf' deve conter apenas números e caracteres especiais");
+                } else {
+                    int confirmacao1 = JOptionPane.showConfirmDialog(null,
+                            "Tem certeza de que deseja cadastrar o cliente?", "Confirmação", JOptionPane.YES_NO_OPTION);
+                    if (confirmacao1 == JOptionPane.YES_NO_OPTION) {
+                        operacoes.cadastrar(clienteNomeField.getText(), clienteIdadeField.getText(),
 
-                // campos de entrada
-
-                operacoes.cadastrar(clienteNomeField.getText(), clienteIdadeField.getText(),
-
-                        clienteCidadeField.getText(), clienteCpfField.getText(), clienteTelefoneField.getText());
-                // Limpa os campos de entrada após a operação de cadastro
-                clienteNomeField.setText("");
-                clienteIdadeField.setText("");
-                clienteCidadeField.setText("");
-                clienteCpfField.setText("");
-                clienteTelefoneField.setText("");
+                                clienteCidadeField.getText(), clienteCpfField.getText(),
+                                clienteTelefoneField.getText());
+                        // Limpa os campos de entrada após a operação de cadastro
+                        clienteNomeField.setText("");
+                        clienteIdadeField.setText("");
+                        clienteCidadeField.setText("");
+                        clienteCpfField.setText("");
+                        clienteTelefoneField.setText("");
+                        JOptionPane.showMessageDialog(null, "O cliente  " + clienteNomeField.getText() + " de "
+                                + clienteIdadeField.getText() + " foi cadastrado com sucesso!");
+                    }
+                }
             }
         });
 
-         // Configura a ação do botão "apagar" para excluir um registro no banco de dados
-         apagar.addActionListener(new ActionListener() {
+        editar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Chama o método "apagar" do objeto operacoes com o valor do campo de
+                // Chama o método "atualizar" do objeto operacoes com os valores dos
 
-                // entrada "placa"
+                // campos de entrada
 
-                operacoes.apagar(clienteCpfField.getText());
-                // Limpa os campos de entrada após a operação de exclusão
+                operacoes.atualizar(clienteNomeField.getText(), clienteIdadeField.getText(),
+
+                        clienteCidadeField.getText(), clienteCpfField.getText(), clienteTelefoneField.getText());
+                // Limpa os campos de entrada após a operação de atualização
                 clienteNomeField.setText("");
                 clienteIdadeField.setText("");
                 clienteCidadeField.setText("");
                 clienteCpfField.setText("");
                 clienteTelefoneField.setText("");
+                JOptionPane.showMessageDialog(null, "Cliente editado com sucesso!");
+            }
+        });
+
+        // Configura a ação do botão "apagar" para excluir um registro no banco de dados
+        apagar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (clienteCpfField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Preencha com o cpf do cliente que deseja apagar");
+                } else {
+                    int confirmacaoApagar = JOptionPane.showConfirmDialog(null,
+                            "Tem certeza de que deseja apagar o registro do cliente?", "Confirmação",
+                            JOptionPane.YES_NO_OPTION);
+                    if (confirmacaoApagar == JOptionPane.YES_NO_OPTION) {
+                        operacoes.apagar(clienteCpfField.getText());
+                        // Limpa os campos de entrada após a operação de exclusão
+                        clienteNomeField.setText("");
+                        clienteIdadeField.setText("");
+                        clienteCidadeField.setText("");
+                        clienteCpfField.setText("");
+                        clienteTelefoneField.setText("");
+                        JOptionPane.showMessageDialog(null, "O cliente " + clienteNomeField.getText() + " de "
+                                + clienteIdadeField.getText() + " foi apagado com sucesso!");
+                    }
+                }
             }
         });
 
     }
 
-     private void atualizarTabela() {
+    private void atualizarTabela() {
         // atualizar tabela pelo banco de dados
         tableModel.setRowCount(0);
         clientes = new ClientesDAO().listarTodos();
         for (Clientes clientes : clientes) {
-            tableModel.addRow(new Object[] { clientes.getNome(), clientes.getIdade(), clientes.getCidade(), clientes.getCpf(),
-                    clientes.getTelefone() });
+            tableModel.addRow(
+                    new Object[] { clientes.getNome(), clientes.getIdade(), clientes.getCidade(), clientes.getCpf(),
+                            clientes.getTelefone() });
         }
     }
 }

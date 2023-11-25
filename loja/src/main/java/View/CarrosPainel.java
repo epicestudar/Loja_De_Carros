@@ -119,7 +119,9 @@ public class CarrosPainel extends JPanel {
                     JOptionPane.showMessageDialog(null, "O campo 'valor' deve conter apenas números e caracteres especiais");
                 }
                 else{
-                    operacoes.cadastrar(carMarcaField.getText(), carModeloField.getText(),
+                    int confirmacao1 = JOptionPane.showConfirmDialog(null, "Tem certeza de que deseja cadastrar o carro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+                    if(confirmacao1 == JOptionPane.YES_NO_OPTION) {
+                         operacoes.cadastrar(carMarcaField.getText(), carModeloField.getText(),
 
                         carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
                 // Limpa os campos de entrada após a operação de cadastro
@@ -129,7 +131,9 @@ public class CarrosPainel extends JPanel {
                 carPlacaField.setText("");
                 carValorField.setText("");
                 JOptionPane.showMessageDialog(null, "O carro do modelo " + carModeloField.getText() + " da placa " + carPlacaField.getText() + " foi cadastrado com sucesso!");
+                    }
                 }
+                
                 
             }
         });
