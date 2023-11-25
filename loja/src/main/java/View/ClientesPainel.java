@@ -145,20 +145,20 @@ public class ClientesPainel extends JPanel {
         editar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Chama o método "atualizar" do objeto operacoes com os valores dos
+                if (clienteCpfField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Selecione algo para editar");
+                } else {
+                    operacoes.atualizar(clienteNomeField.getText(), clienteIdadeField.getText(),
 
-                // campos de entrada
-
-                operacoes.atualizar(clienteNomeField.getText(), clienteIdadeField.getText(),
-
-                        clienteCidadeField.getText(), clienteCpfField.getText(), clienteTelefoneField.getText());
-                // Limpa os campos de entrada após a operação de atualização
-                clienteNomeField.setText("");
-                clienteIdadeField.setText("");
-                clienteCidadeField.setText("");
-                clienteCpfField.setText("");
-                clienteTelefoneField.setText("");
-                JOptionPane.showMessageDialog(null, "Cliente editado com sucesso!");
+                            clienteCidadeField.getText(), clienteCpfField.getText(), clienteTelefoneField.getText());
+                    // Limpa os campos de entrada após a operação de atualização
+                    clienteNomeField.setText("");
+                    clienteIdadeField.setText("");
+                    clienteCidadeField.setText("");
+                    clienteCpfField.setText("");
+                    clienteTelefoneField.setText("");
+                    JOptionPane.showMessageDialog(null, "Cliente editado com sucesso!");
+                }
             }
         });
 

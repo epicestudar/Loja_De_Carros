@@ -46,7 +46,7 @@ public class CarrosPainel extends JPanel {
         super();
         // entrada de dados
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        
+
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new GridLayout(7, 2));
         inputPanel.add(new JLabel("Marca")).setFont(new Font("Arial", Font.PLAIN, 16));
@@ -98,7 +98,7 @@ public class CarrosPainel extends JPanel {
         // Cria um objeto operacoes da classe CarrosControl para executar operações no
         // banco de dados
 
-                new CarrosDAO().criaTabela();
+        new CarrosDAO().criaTabela();
 
         atualizarTabela();
 
@@ -109,32 +109,33 @@ public class CarrosPainel extends JPanel {
         cadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               if(carMarcaField.getText().isEmpty() || carModeloField.getText().isEmpty() || carAnoField.getText().isEmpty() || carPlacaField.getText().isEmpty() || carValorField.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos antes de cadastrar o carro");
-                } 
-                else if(!carAnoField.getText().matches("[0-9]+")) {
+                if (carMarcaField.getText().isEmpty() || carModeloField.getText().isEmpty()
+                        || carAnoField.getText().isEmpty() || carPlacaField.getText().isEmpty()
+                        || carValorField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Preencha todos os campos antes de cadastrar o carro");
+                } else if (!carAnoField.getText().matches("[0-9]+")) {
                     JOptionPane.showMessageDialog(null, "O campo 'ano' deve conter apenas números");
-                }
-                else if(!carValorField.getText().matches("[0-9]+([,.][0-9]+)?")) {
-                    JOptionPane.showMessageDialog(null, "O campo 'valor' deve conter apenas números e caracteres especiais");
-                }
-                else{
-                    int confirmacao1 = JOptionPane.showConfirmDialog(null, "Tem certeza de que deseja cadastrar o carro?", "Confirmação", JOptionPane.YES_NO_OPTION);
-                    if(confirmacao1 == JOptionPane.YES_NO_OPTION) {
-                         operacoes.cadastrar(carMarcaField.getText(), carModeloField.getText(),
+                } else if (!carValorField.getText().matches("[0-9]+([,.][0-9]+)?")) {
+                    JOptionPane.showMessageDialog(null,
+                            "O campo 'valor' deve conter apenas números e caracteres especiais");
+                } else {
+                    int confirmacao1 = JOptionPane.showConfirmDialog(null,
+                            "Tem certeza de que deseja cadastrar o carro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+                    if (confirmacao1 == JOptionPane.YES_NO_OPTION) {
+                        operacoes.cadastrar(carMarcaField.getText(), carModeloField.getText(),
 
-                        carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
-                // Limpa os campos de entrada após a operação de cadastro
-                carMarcaField.setText("");
-                carModeloField.setText("");
-                carAnoField.setText("");
-                carPlacaField.setText("");
-                carValorField.setText("");
-                JOptionPane.showMessageDialog(null, "O carro do modelo " + carModeloField.getText() + " da placa " + carPlacaField.getText() + " foi cadastrado com sucesso!");
+                                carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
+                        // Limpa os campos de entrada após a operação de cadastro
+                        carMarcaField.setText("");
+                        carModeloField.setText("");
+                        carAnoField.setText("");
+                        carPlacaField.setText("");
+                        carValorField.setText("");
+                        JOptionPane.showMessageDialog(null, "O carro do modelo " + carModeloField.getText()
+                                + " da placa " + carPlacaField.getText() + " foi cadastrado com sucesso!");
                     }
                 }
-                
-                
+
             }
         });
 
@@ -143,20 +144,20 @@ public class CarrosPainel extends JPanel {
         editar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Chama o método "atualizar" do objeto operacoes com os valores dos
+                if (carPlacaField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Selecione algo para editar");
+                } else {
+                    operacoes.atualizar(carMarcaField.getText(), carModeloField.getText(),
 
-                // campos de entrada
-
-                operacoes.atualizar(carMarcaField.getText(), carModeloField.getText(),
-
-                        carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
-                // Limpa os campos de entrada após a operação de atualização
-                carMarcaField.setText("");
-                carModeloField.setText("");
-                carAnoField.setText("");
-                carPlacaField.setText("");
-                carValorField.setText("");
-                JOptionPane.showMessageDialog(null, "Carro editado com sucesso!");
+                            carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
+                    // Limpa os campos de entrada após a operação de atualização
+                    carMarcaField.setText("");
+                    carModeloField.setText("");
+                    carAnoField.setText("");
+                    carPlacaField.setText("");
+                    carValorField.setText("");
+                    JOptionPane.showMessageDialog(null, "Carro editado com sucesso!");
+                }
             }
         });
 
@@ -164,25 +165,25 @@ public class CarrosPainel extends JPanel {
         apagar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(carPlacaField.getText().isEmpty()) {
+                if (carPlacaField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Preencha com a placa do carro que deseja apagar");
-                }
-                else{
-                    int confirmacao = JOptionPane.showConfirmDialog(null, "Tem certeza de que deseja apagar o carro?", "Confirmação", JOptionPane.YES_NO_OPTION);
-                    if(confirmacao == JOptionPane.YES_NO_OPTION) {
-                         operacoes.apagar(carPlacaField.getText());
-                // Limpa os campos de entrada após a operação de exclusão
-                carMarcaField.setText("");
-                carModeloField.setText("");
-                carAnoField.setText("");
-                carPlacaField.setText("");
-                carValorField.setText("");
-                JOptionPane.showMessageDialog(null, "O carro do modelo " + carModeloField.getText() + " da placa " + carPlacaField.getText() + " foi apagado com sucesso!");
+                } else {
+                    int confirmacao = JOptionPane.showConfirmDialog(null, "Tem certeza de que deseja apagar o carro?",
+                            "Confirmação", JOptionPane.YES_NO_OPTION);
+                    if (confirmacao == JOptionPane.YES_NO_OPTION) {
+                        operacoes.apagar(carPlacaField.getText());
+                        // Limpa os campos de entrada após a operação de exclusão
+                        carMarcaField.setText("");
+                        carModeloField.setText("");
+                        carAnoField.setText("");
+                        carPlacaField.setText("");
+                        carValorField.setText("");
+                        JOptionPane.showMessageDialog(null, "O carro do modelo " + carModeloField.getText()
+                                + " da placa " + carPlacaField.getText() + " foi apagado com sucesso!");
                     }
                 }
             }
         });
-
 
     }
 
