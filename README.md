@@ -59,8 +59,8 @@
 </p> <br><br>
 
 <p align="left">
-   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=440&size=22&pause=1000&color=38F77CFF&center=false&vCenter=false&repeat=false&width=435&lines=Maiores Dificuldades 👋" alt="Typing SVG" /></a>
+   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=440&size=22&pause=1000&color=38F77CFF&center=false&vCenter=false&repeat=false&width=435&lines=Tratamento de Erros 👋" alt="Typing SVG" /></a>
    <p>
-    será atualizado hj a noite
+    será feito amanhã
    </p>
 </p> <br><br>
