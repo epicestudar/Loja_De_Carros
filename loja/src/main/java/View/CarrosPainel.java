@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -108,11 +109,17 @@ public class CarrosPainel extends JPanel {
         cadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Chama o método "cadastrar" do objeto operacoes com os valores dos
-
-                // campos de entrada
-
-                operacoes.cadastrar(carMarcaField.getText(), carModeloField.getText(),
+               if(carMarcaField.getText().isEmpty() || carModeloField.getText().isEmpty() || carAnoField.getText().isEmpty() || carPlacaField.getText().isEmpty() || carValorField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos antes de cadastrar o carro");
+                } 
+                else if(!carAnoField.getText().matches("[0-9]+")) {
+                    JOptionPane.showMessageDialog(null, "O campo 'ano' deve conter apenas números");
+                }
+                else if(!carValorField.getText().matches("[0-9]+([,.][0-9]+)?")) {
+                    JOptionPane.showMessageDialog(null, "O campo 'valor' deve conter apenas números e caracteres especiais");
+                }
+                else{
+                    operacoes.cadastrar(carMarcaField.getText(), carModeloField.getText(),
 
                         carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
                 // Limpa os campos de entrada após a operação de cadastro
@@ -121,6 +128,9 @@ public class CarrosPainel extends JPanel {
                 carAnoField.setText("");
                 carPlacaField.setText("");
                 carValorField.setText("");
+                JOptionPane.showMessageDialog(null, "O carro do modelo " + carModeloField.getText() + " da placa " + carPlacaField.getText() + " foi cadastrado com sucesso!");
+                }
+                
             }
         });
 
@@ -142,6 +152,7 @@ public class CarrosPainel extends JPanel {
                 carAnoField.setText("");
                 carPlacaField.setText("");
                 carValorField.setText("");
+                JOptionPane.showMessageDialog(null, "Carro editado com sucesso!");
             }
         });
 
@@ -149,17 +160,22 @@ public class CarrosPainel extends JPanel {
         apagar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Chama o método "apagar" do objeto operacoes com o valor do campo de
-
-                // entrada "placa"
-
-                operacoes.apagar(carPlacaField.getText());
+                if(carPlacaField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Preencha com a placa do carro que deseja apagar");
+                }
+                else{
+                    int confirmacao = JOptionPane.showConfirmDialog(null, "Tem certeza de que deseja apagar o carro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+                    if(confirmacao == JOptionPane.YES_NO_OPTION) {
+                         operacoes.apagar(carPlacaField.getText());
                 // Limpa os campos de entrada após a operação de exclusão
                 carMarcaField.setText("");
                 carModeloField.setText("");
                 carAnoField.setText("");
                 carPlacaField.setText("");
                 carValorField.setText("");
+                JOptionPane.showMessageDialog(null, "O carro do modelo " + carModeloField.getText() + " da placa " + carPlacaField.getText() + " foi apagado com sucesso!");
+                    }
+                }
             }
         });
 
