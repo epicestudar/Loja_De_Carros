@@ -131,8 +131,9 @@ public class CarrosPainel extends JPanel {
                         carAnoField.setText("");
                         carPlacaField.setText("");
                         carValorField.setText("");
-                        JOptionPane.showMessageDialog(null, "O carro do modelo " + carModeloField.getText()
-                                + " da placa " + carPlacaField.getText() + " foi cadastrado com sucesso!");
+                        // JOptionPane.showMessageDialog(null, "O carro do modelo " + carModeloField.getText()
+                        //         + " da placa " + carPlacaField.getText() + " foi cadastrado com sucesso!");
+                        JOptionPane.showMessageDialog(null, "O carro foi cadastrado com sucesso!");
                     }
                 }
 
@@ -178,8 +179,9 @@ public class CarrosPainel extends JPanel {
                         carAnoField.setText("");
                         carPlacaField.setText("");
                         carValorField.setText("");
-                        JOptionPane.showMessageDialog(null, "O carro do modelo " + carModeloField.getText()
-                                + " da placa " + carPlacaField.getText() + " foi apagado com sucesso!");
+                        // JOptionPane.showMessageDialog(null, "O carro do modelo " + carModeloField.getText()
+                        //         + " da placa " + carPlacaField.getText() + " foi apagado com sucesso!");
+                        JOptionPane.showMessageDialog(null, "O carro foi apagado com sucesso!");
                     }
                 }
             }

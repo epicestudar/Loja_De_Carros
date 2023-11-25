@@ -55,6 +55,26 @@ public class VendasPainel extends JPanel {
     public VendasPainel() {
         super();
         // entrada de dados
+         carrosComboBox = new JComboBox<>();
+        // Preencha o JComboBox com os carros
+        carros = new CarrosDAO().listarTodos();
+        carrosComboBox.addItem("Selecione o Carro");
+        for (Carros carro : carros) {
+            carrosComboBox.addItem(carro.getMarca()
+                    + " " + carro.getModelo()
+                    + " " + carro.getPlaca());
+        }
+        add(carrosComboBox);
+
+        clientesComboBox = new JComboBox<>();
+        // Preencha o JComboBox com os carros
+        clientes = new ClientesDAO().listarTodos();
+        clientesComboBox.addItem("Selecione o Cliente");
+        for (Clientes cliente : clientes) {
+            clientesComboBox.addItem(cliente.getNome()
+                    + " " + cliente.getCpf());
+        }
+        add(clientesComboBox);
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         JPanel inputPanel = new JPanel();
@@ -75,27 +95,6 @@ public class VendasPainel extends JPanel {
         add(botoes);
         inputPanel.setVisible(true);
         botoes.setVisible(true);
-
-        carrosComboBox = new JComboBox<>();
-        // Preencha o JComboBox com os carros
-        carros = new CarrosDAO().listarTodos();
-        carrosComboBox.addItem("Selecione o Carro");
-        for (Carros carro : carros) {
-            carrosComboBox.addItem(carro.getMarca()
-                    + " " + carro.getModelo()
-                    + " " + carro.getPlaca());
-        }
-        add(carrosComboBox);
-
-        clientesComboBox = new JComboBox<>();
-        // Preencha o JComboBox com os carros
-        clientes = new ClientesDAO().listarTodos();
-        clientesComboBox.addItem("Selecione o Cliente");
-        for (Clientes cliente : clientes) {
-            clientesComboBox.addItem(cliente.getNome()
-                    + " " + cliente.getCpf());
-        }
-        add(clientesComboBox);
 
         // tabela de clientes
         JScrollPane jSPane = new JScrollPane();

@@ -115,7 +115,7 @@ public class ClientesPainel extends JPanel {
                     JOptionPane.showMessageDialog(null, "Preencha todos os campos antes de cadastrar o cliente");
                 } else if (!clienteIdadeField.getText().matches("[0-9]+")) {
                     JOptionPane.showMessageDialog(null, "O campo 'idade' deve conter apenas números");
-                } else if (!clienteIdadeField.getText().equals("18")) {
+                } else if (clienteIdadeField.getText().equals("18")) {
                     JOptionPane.showMessageDialog(null,
                             "O cliente deve conter no mínimo 18 anos para ser possível de efetuar o seu cadastro");
                 } else if (!clienteCpfField.getText().matches("[0-9]+([-.][0-9]+)?")) {
@@ -135,8 +135,10 @@ public class ClientesPainel extends JPanel {
                         clienteCidadeField.setText("");
                         clienteCpfField.setText("");
                         clienteTelefoneField.setText("");
-                        JOptionPane.showMessageDialog(null, "O cliente  " + clienteNomeField.getText() + " de "
-                                + clienteIdadeField.getText() + " foi cadastrado com sucesso!");
+                        // JOptionPane.showMessageDialog(null, "O cliente  " + clienteNomeField.getText() + " de "
+                        //         + clienteIdadeField.getText() + " foi cadastrado com sucesso!");
+
+                         JOptionPane.showMessageDialog(null, "O cliente foi cadastrado com sucesso!");
                     }
                 }
             }
@@ -180,8 +182,10 @@ public class ClientesPainel extends JPanel {
                         clienteCidadeField.setText("");
                         clienteCpfField.setText("");
                         clienteTelefoneField.setText("");
-                        JOptionPane.showMessageDialog(null, "O cliente " + clienteNomeField.getText() + " de "
-                                + clienteIdadeField.getText() + " foi apagado com sucesso!");
+                        // JOptionPane.showMessageDialog(null, "O cliente " + clienteNomeField.getText() + " de "
+                        //         + clienteIdadeField.getText() + " foi apagado com sucesso!");
+
+                        JOptionPane.showMessageDialog(null, "O cliente foi apagado com sucesso!");
                     }
                 }
             }
