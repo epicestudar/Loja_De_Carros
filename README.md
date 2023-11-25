@@ -4,7 +4,10 @@
 <p align="center">
    <img src="logo.png" alt="logo" width=250px>
 </p>
-
+<p align="center">
+    <img src="https://img.shields.io/badge/Atividade Formativa-SENAI-red?style=for-the-badge" alt="backend" />
+   <img src="https://img.shields.io/badge/Linguagem Utilizada-JAVA-red?style=for-the-badge" alt="backend" />
+ </p>
 <hr>
 <br>
 <br><br><br>
