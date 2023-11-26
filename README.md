@@ -82,15 +82,15 @@
     <h3>Preencha todos os campos antes de cadastrar o cliente</h3>
      <img src="gifs/gif12.gif">
       <br><br><br>
-<!--       <h3>O campo 'ano' deve conter apenas números</h3>
-     <img src="gifs/gif9.gif">
+      <h3>O campo 'idade' deve conter apenas números</h3>
+     <img src="gifs/gif13.gif">
       <br><br><br>
-      <h3>O campo 'valor' deve conter apenas números e caracteres especiais</h3>
-     <img src="gifs/gif10.gif">
+      <h3>O campo 'cpf' deve conter apenas números e caracteres especiais</h3>
+     <img src="gifs/gif14.gif">
       <br><br><br>
-      <h3>Cadastro do carro cancelado</h3>
-     <img src="gifs/gif11.gif">
-      <br><br><br> -->
+      <h3>Cadastro do cliente cancelado</h3>
+     <img src="gifs/gif15.gif">
+      <br><br><br>
    </p>
 </p> <br><br>
 
