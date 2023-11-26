@@ -115,9 +115,6 @@ public class ClientesPainel extends JPanel {
                     JOptionPane.showMessageDialog(null, "Preencha todos os campos antes de cadastrar o cliente");
                 } else if (!clienteIdadeField.getText().matches("[0-9]+")) {
                     JOptionPane.showMessageDialog(null, "O campo 'idade' deve conter apenas números");
-                } else if (clienteIdadeField.getText().equals("18")) {
-                    JOptionPane.showMessageDialog(null,
-                            "O cliente deve conter no mínimo 18 anos para ser possível de efetuar o seu cadastro");
                 } else if (!clienteCpfField.getText().matches("[0-9]+([-.][0-9]+)?")) {
                     JOptionPane.showMessageDialog(null,
                             "O campo 'cpf' deve conter apenas números e caracteres especiais");
