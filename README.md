@@ -20,6 +20,14 @@
 </p> <br><br><br><br><br>
 
 <p align="left">
+   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=440&size=22&pause=1000&color=38F77CFF&center=false&vCenter=false&repeat=false&width=435&lines=Descrição do Projeto 💭" alt="Typing SVG" /></a>
+   <p>
+      <h3>Basicamente, este projeto consistia em criar uma aplicação de uma loja de carros com 3 páginas. Na primeira, o funcionário/dono iria cadastrar o registro de um carro que havia chegado na loja. Na segunda, registrar um cliente da loja. Na terceira, registrar uma venda com o carro e cliente cadastrado nos passos anteriores. Tudo isso sendo armazenado em um banco de dados.</h3>
+   </p>
+</p> <br><br><br><br><br>
+
+
+<p align="left">
    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=440&size=22&pause=1000&color=38F77CFF&center=false&vCenter=false&repeat=false&width=435&lines=Cadastro de Carros 🚗" alt="Typing SVG" /></a>
    <p>
       <h3>Cadastrando o carro</h3>
@@ -73,6 +81,12 @@
       <h3>Cadastro do carro cancelado</h3>
      <img src="gifs/gif11.gif">
       <br><br><br>
+      <h3>Selecione algo para editar</h3>
+     <img src="gifs/gif16.gif">
+      <br><br><br>
+      <h3>Selecione algo para apagar</h3>
+     <img src="gifs/gif17.gif">
+      <br><br><br>
    </p>
 </p> <br><br>
 
@@ -91,8 +105,35 @@
       <h3>Cadastro do cliente cancelado</h3>
      <img src="gifs/gif15.gif">
       <br><br><br>
+       <h3>Selecione algo para editar</h3>
+     <img src="gifs/gif18.gif">
+      <br><br><br>
+       <h3>Selecionoe algo para apagar</h3>
+     <img src="gifs/gif19.gif">
+      <br><br><br>
+   </p>
+</p> <br><br>
+
+<p align="left">
+   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=440&size=22&pause=1000&color=38F77CFF&center=false&vCenter=false&repeat=false&width=435&lines=Tratamento de Erros - Vendas 💸" alt="Typing SVG" /></a>
+   <p>
+    <h3>Preencha todos os campos antes de registrar a venda</h3>
+     <img src="gifs/gif20.gif">
+      <br><br><br>
+      <h3>Selecione algo para editar</h3>
+     <img src="gifs/gif21.gif">
+      <br><br><br>
+      <h3>Selecione algo para apagar</h3>
+     <img src="gifs/gif22.gif">
+      <br><br><br>
    </p>
 </p> <br><br>
 
 
+<p align="left">
+   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=440&size=22&pause=1000&color=38F77CFF&center=false&vCenter=false&repeat=false&width=435&lines=Conclusão 👋" alt="Typing SVG" /></a>
+   <p>
+      <h3>Se chegou até aqui, gostou do que viu e ainda deu estrela + fork = humilde</h3>
+   </p>
+</p> <br><br><br><br><br>
 
