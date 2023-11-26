@@ -133,7 +133,7 @@
 <p align="left">
    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=440&size=22&pause=1000&color=38F77CFF&center=false&vCenter=false&repeat=false&width=435&lines=Conclusão 👋" alt="Typing SVG" /></a>
    <p>
-      <h3>Se chegou até aqui, gostou do que viu e ainda deu estrela + fork = humilde</h3>
+      <h3>Se chegou até aqui, gostou do que viu e ainda deu estrela + fork = humilde 🤙</h3>
    </p>
-</p> <br><br><br><br><br>
+</p>
 
