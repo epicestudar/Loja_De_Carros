@@ -174,7 +174,7 @@ public class ClientesPainel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (clienteCpfField.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Preencha com o cpf do cliente que deseja apagar");
+                    JOptionPane.showMessageDialog(null, "Selecione algo para apagar");
                 } else {
                     int confirmacaoApagar = JOptionPane.showConfirmDialog(null,
                             "Tem certeza de que deseja apagar o registro do cliente?", "Confirmação",

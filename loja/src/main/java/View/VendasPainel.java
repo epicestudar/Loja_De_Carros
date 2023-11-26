@@ -173,8 +173,8 @@ public class VendasPainel extends JPanel {
                 String carro = (String) carrosComboBox.getSelectedItem();
                 String cliente = (String) clientesComboBox.getSelectedItem();
 
-                if (carro.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Preencha com o carro que deseja apagar");
+                if (valor.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Selecione algo para apagar");
                 } else {
                     int confirmacaoApagar = JOptionPane.showConfirmDialog(null,
                             "Tem certeza de que deseja apagar o registro da venda?", "Confirmação",
@@ -207,7 +207,7 @@ public class VendasPainel extends JPanel {
                 String valor = valorField.getText();
                 String carro = (String) carrosComboBox.getSelectedItem();
                 String cliente = (String) clientesComboBox.getSelectedItem();
-            if (carro.isEmpty()) {
+            if (valor.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Selecione algo para editar");
             } else {
                 operacoes.atualizar(dataVendidoField.getText(), valorField.getText(), carro, cliente);

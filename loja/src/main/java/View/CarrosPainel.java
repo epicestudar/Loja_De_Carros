@@ -175,7 +175,7 @@ public class CarrosPainel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (carPlacaField.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Preencha com a placa do carro que deseja apagar");
+                    JOptionPane.showMessageDialog(null, "Selecione algo para apagar!");
                 } else {
                     int confirmacao = JOptionPane.showConfirmDialog(null, "Tem certeza de que deseja apagar o carro?",
                             "Confirmação", JOptionPane.YES_NO_OPTION);
