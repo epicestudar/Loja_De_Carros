@@ -61,7 +61,7 @@
 <p align="left">
    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=440&size=22&pause=1000&color=38F77CFF&center=false&vCenter=false&repeat=false&width=435&lines=Tratamento de Erros - Carros 🚗" alt="Typing SVG" /></a>
    <p>
-    <h3>Preencha todos os campos antes de cadastrar</h3>
+    <h3>Preencha todos os campos antes de cadastrar o carro</h3>
      <img src="gifs/gif8.gif">
       <br><br><br>
       <h3>O campo 'ano' deve conter apenas números</h3>
@@ -73,6 +73,24 @@
       <h3>Cadastro do carro cancelado</h3>
      <img src="gifs/gif11.gif">
       <br><br><br>
+   </p>
+</p> <br><br>
+
+<p align="left">
+   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=440&size=22&pause=1000&color=38F77CFF&center=false&vCenter=false&repeat=false&width=435&lines=Tratamento de Erros - Clientes 🧑" alt="Typing SVG" /></a>
+   <p>
+    <h3>Preencha todos os campos antes de cadastrar o cliente</h3>
+     <img src="gifs/gif12.gif">
+      <br><br><br>
+<!--       <h3>O campo 'ano' deve conter apenas números</h3>
+     <img src="gifs/gif9.gif">
+      <br><br><br>
+      <h3>O campo 'valor' deve conter apenas números e caracteres especiais</h3>
+     <img src="gifs/gif10.gif">
+      <br><br><br>
+      <h3>Cadastro do carro cancelado</h3>
+     <img src="gifs/gif11.gif">
+      <br><br><br> -->
    </p>
 </p> <br><br>
 
