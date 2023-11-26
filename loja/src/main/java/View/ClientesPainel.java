@@ -140,6 +140,14 @@ public class ClientesPainel extends JPanel {
 
                          JOptionPane.showMessageDialog(null, "O cliente foi cadastrado com sucesso!");
                     }
+                    else if(confirmacao1 == JOptionPane.NO_OPTION) {
+                        JOptionPane.showMessageDialog(null, "Cadastro do cliente cancelado!");
+                        clienteNomeField.setText("");
+                        clienteIdadeField.setText("");
+                        clienteCidadeField.setText("");
+                        clienteCpfField.setText("");
+                        clienteTelefoneField.setText("");
+                    }
                 }
             }
         });
@@ -186,6 +194,16 @@ public class ClientesPainel extends JPanel {
                         //         + clienteIdadeField.getText() + " foi apagado com sucesso!");
 
                         JOptionPane.showMessageDialog(null, "O cliente foi apagado com sucesso!");
+                    }
+                    else if (confirmacaoApagar == JOptionPane.NO_OPTION) {
+                         clienteNomeField.setText("");
+                        clienteIdadeField.setText("");
+                        clienteCidadeField.setText("");
+                        clienteCpfField.setText("");
+                        clienteTelefoneField.setText("");
+                        // JOptionPane.showMessageDialog(null, "O carro do modelo " + carModeloField.getText()
+                        //         + " da placa " + carPlacaField.getText() + " foi apagado com sucesso!");
+                        JOptionPane.showMessageDialog(null, "Exclusão do cadastro do cliente cancelado!");
                     }
                 }
             }

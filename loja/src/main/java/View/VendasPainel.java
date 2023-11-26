@@ -152,6 +152,13 @@ public class VendasPainel extends JPanel {
                         valorField.setText("");
                         JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!");
                     }
+                    else if (confirmacaoVendas == JOptionPane.NO_OPTION) {
+                        clientesComboBox.setSelectedIndex(0);
+                        carrosComboBox.setSelectedIndex(0);
+                        dataVendidoField.setText("");
+                        valorField.setText("");
+                        JOptionPane.showMessageDialog(null, "Registro da venda cancelada!");
+                    }
 
                 }
             }
@@ -181,6 +188,14 @@ public class VendasPainel extends JPanel {
                         valorField.setText("");
                         JOptionPane.showMessageDialog(null, "VENDA DELETADA COM SUCESSO!");
                     }
+                     else if (confirmacaoApagar == JOptionPane.NO_OPTION) {
+                        clientesComboBox.setSelectedIndex(0);
+                        carrosComboBox.setSelectedIndex(0);
+                        dataVendidoField.setText("");
+                        valorField.setText("");
+                        JOptionPane.showMessageDialog(null, "EXCLUSÃO DA VENDA CANCELADA COM SUCESSO!");
+                    }
+                    
                 }
             }
         });

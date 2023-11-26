@@ -135,6 +135,14 @@ public class CarrosPainel extends JPanel {
                         //         + " da placa " + carPlacaField.getText() + " foi cadastrado com sucesso!");
                         JOptionPane.showMessageDialog(null, "O carro foi cadastrado com sucesso!");
                     }
+                    else if(confirmacao1 == JOptionPane.NO_OPTION) {
+                        JOptionPane.showMessageDialog(null, "Cadastro do carro cancelado!");
+                        carMarcaField.setText("");
+                        carModeloField.setText("");
+                        carAnoField.setText("");
+                        carPlacaField.setText("");
+                        carValorField.setText("");
+                    }
                 }
 
             }
@@ -181,7 +189,17 @@ public class CarrosPainel extends JPanel {
                         carValorField.setText("");
                         // JOptionPane.showMessageDialog(null, "O carro do modelo " + carModeloField.getText()
                         //         + " da placa " + carPlacaField.getText() + " foi apagado com sucesso!");
-                        JOptionPane.showMessageDialog(null, "O carro foi apagado com sucesso!");
+                        JOptionPane.showMessageDialog(null, "O cadastro carro foi apagado com sucesso!");
+                    }
+                    else if (confirmacao == JOptionPane.NO_OPTION) {
+                        carMarcaField.setText("");
+                        carModeloField.setText("");
+                        carAnoField.setText("");
+                        carPlacaField.setText("");
+                        carValorField.setText("");
+                        // JOptionPane.showMessageDialog(null, "O carro do modelo " + carModeloField.getText()
+                        //         + " da placa " + carPlacaField.getText() + " foi apagado com sucesso!");
+                        JOptionPane.showMessageDialog(null, "Exclusão do cadastro do carro cancelado!");
                     }
                 }
             }
